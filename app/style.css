@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.timer-container {
+
+}
+
+.timer {
+  text-align: right;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 25px;
+  line-height: 1.2;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0,0,0,.5);
+}
