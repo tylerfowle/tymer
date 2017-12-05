@@ -10,9 +10,9 @@ CURRENT_TIME=$(date)
 CURRENT_TIME_SEC=$(date +%s)
 FUTURE_TIME=$(date -v +30M)
 FUTURE_TIME_SEC=$(date -v +30M +%s)
-DEFAULT_TYME="+30M"
 
-TYMER_DESC=""
+DEFAULT_TYME="+30M"
+DEFAULT_DESC="No Description"
 
 # variables
 whichMethod=$1
@@ -44,7 +44,7 @@ function listTymers() {
     time_left=$((seconds - CURRENT_TIME_SEC))
     time_left=$(convertsecs $time_left)
 
-    echo $current_tymer_desc ":" $human_readable_time ":" $time_left
+    printf "$current_tymer_desc\t$human_readable_time\t$time_left\n"
   done< $TYMERS_FILE
 }
 
@@ -60,9 +60,6 @@ function addTymer() {
   printf "\t"$FUTURE_TIME"\n"
   printf "\t"$TYMER_LENGTH"\n"
 
-  if [[ $TYMER_DESC == "" ]]; then
-    TYMER_DESC="No Description"
-  fi
   echo $FUTURE_TIME_SEC:$FUTURE_TIME=$TYMER_DESC >> $TYMERS_FILE
 }
 
@@ -99,8 +96,8 @@ function notifier() {
 ########################################################
 case $whichMethod in
   list     ) listTymers ;;
-  ls       ) listTymers ;;
-  add      ) TYMER_DESC=$2; TYMER_LENGTH=${3:-DEFAULT_TYME}; addTymer ;;
+  ls       ) listTymers | column -t ;;
+  add      ) TYMER_DESC=${2:-$DEFAULT_DESC}; TYMER_LENGTH=${3:-$DEFAULT_TYME}; addTymer ;;
   check    ) checkTymers ;;
   *        ) checkTymers ;;
 esac
