@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# brew install terminal-notifier
+
+cp ./tymer /usr/local/bin/tymer
+cp ./com.tymer.daemon.plist ~/Library/LaunchAgents/com.tymer.daemon.plist
+launchctl load ~/Library/LaunchAgents/com.tymer.daemon.plist

@@ -7,14 +7,10 @@
     <key>ProgramArguments</key>
     <array>
       <string>/bin/sh</string>
-      <string>/Users/tyler.fowle/Repos/tymer/daemon/manager.sh</string>
+      <string>/usr/local/bin/tymer</string>
     </array>
     <key>StartInterval</key>
     <integer>10</integer>
-    <key>StandardOutPath</key>
-    <string>/Users/tyler.fowle/Repos/tymer/daemon/logfile.log</string>
-    <key>StandardErrorPath</key>
-    <string>/Users/tyler.fowle/Repos/tymer/daemon/errorfile.log</string>
     <key>RunAtLoad</key>
     <true/>
   </dict>
