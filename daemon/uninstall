@@ -3,3 +3,4 @@
 rm /usr/local/bin/tymer
 launchctl unload ~/Library/LaunchAgents/com.tymer.daemon.plist
 rm ~/Library/LaunchAgents/com.tymer.daemon.plist
+echo uninstall complete!
