@@ -100,13 +100,38 @@ function notifier() {
   /usr/local/bin/terminal-notifier -title 'Tymer' -subtitle "$2" -message "$1"': Tymer has finished!'  -sound 'Ping'
 }
 
+
+
+function loop(){
+  while true; do
+
+    clear
+
+    CURRENT_TIME=$(date)
+    CURRENT_TIME_SEC=$(date +%s)
+
+    listTymers | column -ts $'\t'
+
+    sleep 1
+    tput cuu1
+    tput el
+    tput cuu1
+    tput el
+  done
+}
+
+
 ########################################################
 # check which function should run
 case $whichMethod in
   list     ) listTymers ;;
-  ls       ) listTymers | column -t ;;
+  ls       ) listTymers | column -ts $'\t' ;;
   add      ) TYMER_DESC=${2:-$DEFAULT_DESC}; TYMER_LENGTH=${3:-$DEFAULT_TYME}; addTymer ;;
   check    ) checkTymers ;;
+  loop     ) loop ;;
   *        ) checkTymers ;;
 esac
 ########################################################
+
+
+
