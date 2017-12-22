@@ -1,10 +1,18 @@
 import time
 import json
+import os
+import sys
 from datetime import datetime
 from datetime import timedelta
 
 
 debug = False
+
+# VARIABLES
+# ================================================================================
+# database file
+tymer_filepath=os.path.expanduser('~/.tymer/tymers.txt')
+tymer_file = open(tymer_filepath, "a+")
 
 # set tymer vars
 tymer_duration = 30
@@ -32,12 +40,22 @@ tymer['end_time'] = str(future_time)
 tymer['end_time_sec'] = future_time_sec
 tymer['tymer_duration'] = tymer_duration
 
+# arguments
+argument_len=len(sys.argv)
+argument_list=str(sys.argv)
+# ================================================================================
+
+
+# MAIN
 # convert tymer dict to string with pretty printing
 json_output = json.dumps(tymer, sort_keys=True, indent=4, separators=(',', ': '))
 print(json_output)
 
 
 if debug == True:
+
+    print argument_len
+    print argument_list
 
     json_string = '{"first_name": "Guido", "last_name":"Rossum"}'
 
@@ -50,14 +68,15 @@ if debug == True:
     print(future_time)
     print(future_time_sec)
 
-
-# f = open("writefile.txt", "a+")
-# for i in range(10):
-#     f.write("this is line %d\r\n" % (i+1))
-# f.write("end")
-# f.close()
+    os.system('clear')
 
 
-# f=open("writefile.txt", "r")
+f = open("database.txt", "a+")
+f.write(json_output)
+f.write(",")
+f.close()
+
+
+# f=open("database.txt", "r")
 # contents = f.read()
 # print contents
