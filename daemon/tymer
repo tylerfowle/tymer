@@ -8,10 +8,10 @@ TYMERS_FILE=~/.tymer/tymers.txt
 
 CURRENT_TIME=$(date)
 CURRENT_TIME_SEC=$(date +%s)
-FUTURE_TIME=$(date -v +30M)
-FUTURE_TIME_SEC=$(date -v +30M +%s)
+FUTURE_TIME=$(date -v +20M)
+FUTURE_TIME_SEC=$(date -v +20M +%s)
 
-DEFAULT_TYME="+30M"
+DEFAULT_TYME="+20M"
 DEFAULT_DESC="No Description"
 
 # variables
